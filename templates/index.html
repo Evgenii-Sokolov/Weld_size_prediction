@@ -1,0 +1,59 @@
+<!doctype html>
+
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid;
+}
+</style>
+
+<head>
+    <title>Прогнозирование размеров сварного шва</title>
+</head>
+
+<h1 align="center">
+    Прогнозирование размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения
+</h1>
+
+<form action="{{url_for('main')}}" method="POST">
+    <fieldset>
+        <br><legend>Введите следующие параметры:</legend>
+        Сварочный ток (IW), A
+        <br><input name="iw" type="text" required>
+        <br><br>Ток фокусировки (IF), A
+        <br><input name="if" type="text" required>
+        <br><br>
+        Скорость сварки (VW), мм/с
+        <br><input name="vw" type="text" required>
+        <br><br>
+        Расстояние (FP), мм
+        <br><input name="fp" type="text" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+
+
+<div class="result" align="center">
+    {% if result1 and result2 %}
+        <br>
+        <p style="font-size: 50px;">
+            Размеры сварного шва:
+        </p>
+        <p style="font-size: 50px;">
+            Глубина, мм: {{ result1 }}
+        </p>
+        <p style="font-size: 50px;">
+            Ширина, мм: {{ result2 }}
+        </p>
+    {% endif %}
+</div>
+
+</html>
